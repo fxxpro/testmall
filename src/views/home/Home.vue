@@ -70,6 +70,13 @@ export default {
     this.getHomeGoods('pop')
     this.getHomeGoods('new')
     this.getHomeGoods('sell')
+
+  },
+  mounted() {
+
+    this.$bus.$on('itemImageLoad', () => {
+      this.$refs.scroll.refresh()
+    })
   },
   methods: {
     getHomeMultidata() {
@@ -108,8 +115,9 @@ export default {
     loadMore() {
       // console.log('上拉加载更多');
       this.getHomeGoods(this.currentType)
-      this.$refs.scroll.scroll.refresh()
-    }
+      // this.$refs.scroll.scroll.refresh()
+    },
+
   }
 
 }

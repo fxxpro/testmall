@@ -32,21 +32,27 @@ export default {
       probeType: this.probeType,
       pullUpLoad: this.pullUpLoad
     })
+
     this.scroll.on('scroll', (position) => {
       //   console.log(position);
       this.$emit('scroll', position)
     })
+
     this.scroll.on('pullingUp', () => {
       // console.log('上拉加载更多');
       this.$emit('pullingUp')
     })
+    console.log(this.scroll);
   },
   methods: {
     scrollTo(x, y, time = 300) {
-      this.scroll.scrollTo(x, y, time)
+      this.scroll && this.scroll.scrollTo(x, y, time)
     },
     finishPullUp() {
       this.scroll.finishPullUp()
+    },
+    refresh() {
+      this.scroll && this.scroll.refresh()
     }
   },
 }
